@@ -36,11 +36,6 @@ export default function RestaurantModal({ restaurant, onSave, onDelete, onClose,
   const [name, setName] = useState(restaurant?.name ?? 'My Restaurant')
   const [outletId, setOutletId] = useState(restaurant?.zomato_outlet_id ?? '10000001')
   const [city, setCity] = useState(restaurant?.city ?? 'Bengaluru')
-  const [commission, setCommission] = useState(String(restaurant?.commission_pct ?? 20))
-  const [gst, setGst] = useState(String(restaurant?.gst_on_commission_pct ?? 18))
-  const [discountSharing, setDiscountSharing] = useState(String(restaurant?.discount_sharing_pct ?? 50))
-  const [adBudget, setAdBudget] = useState(String(restaurant?.monthly_ad_budget ?? 5000))
-  const [adBudgetGst, setAdBudgetGst] = useState(restaurant?.ad_budget_includes_gst ?? false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const valid = name.trim().length > 0 && outletId.trim().length > 0
@@ -51,11 +46,11 @@ export default function RestaurantModal({ restaurant, onSave, onDelete, onClose,
       name: name.trim(),
       zomato_outlet_id: outletId.trim(),
       city: city.trim(),
-      commission_pct: parseFloat(commission) || 20,
-      gst_on_commission_pct: parseFloat(gst) || 18,
-      discount_sharing_pct: parseFloat(discountSharing) || 0,
-      monthly_ad_budget: parseFloat(adBudget) || 0,
-      ad_budget_includes_gst: adBudgetGst,
+      commission_pct: restaurant?.commission_pct ?? 20,
+      gst_on_commission_pct: restaurant?.gst_on_commission_pct ?? 18,
+      discount_sharing_pct: restaurant?.discount_sharing_pct ?? 0,
+      monthly_ad_budget: restaurant?.monthly_ad_budget ?? 0,
+      ad_budget_includes_gst: restaurant?.ad_budget_includes_gst ?? false,
     })
   }
 
@@ -94,31 +89,6 @@ export default function RestaurantModal({ restaurant, onSave, onDelete, onClose,
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
-            <div>
-              <span style={label}>Commission %</span>
-              <input style={input} type="number" min="0" max="100" step="0.5" value={commission} onChange={e => setCommission(e.target.value)} />
-            </div>
-            <div>
-              <span style={label}>GST on Commission %</span>
-              <input style={input} type="number" min="0" max="100" step="0.5" value={gst} onChange={e => setGst(e.target.value)} />
-            </div>
-            <div>
-              <span style={label}>Discount Sharing %</span>
-              <input style={input} type="number" min="0" max="100" step="5" value={discountSharing} onChange={e => setDiscountSharing(e.target.value)} />
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '12px', alignItems: 'end' }}>
-            <div>
-              <span style={label}>Weekly Ad Budget (₹)</span>
-              <input style={input} type="number" min="0" step="500" value={adBudget} onChange={e => setAdBudget(e.target.value)} />
-            </div>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '7px', cursor: 'pointer', fontSize: '12px', color: 'var(--color-muted-2)', paddingBottom: '9px', whiteSpace: 'nowrap' }}>
-              <input type="checkbox" checked={adBudgetGst} onChange={e => setAdBudgetGst(e.target.checked)} />
-              Incl. GST
-            </label>
-          </div>
         </div>
 
         {error && (

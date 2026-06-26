@@ -115,7 +115,7 @@ export default function LoginPage() {
                 border: '1px solid rgba(226,55,68,0.3)',
                 borderRadius: '8px',
                 padding: '10px 14px',
-                color: '#f87171',
+                color: 'var(--color-accent)',
                 fontSize: '13px',
               }}>
                 {error}

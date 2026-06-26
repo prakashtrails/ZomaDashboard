@@ -310,7 +310,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main style={{
         flex: 1, minWidth: 0,
         background: 'var(--color-bg)',
-        backgroundImage: 'radial-gradient(ellipse 80% 50% at 65% -5%, rgba(96,165,250,0.05) 0%, transparent 100%)',
+        backgroundImage: 'radial-gradient(ellipse 80% 50% at 65% -5%, rgba(226,55,68,0.03) 0%, transparent 100%)',
         overflowY: 'auto',
       }}>
         {children}

@@ -33,13 +33,13 @@ const label: React.CSSProperties = {
 }
 
 export default function RestaurantModal({ restaurant, onSave, onDelete, onClose, error }: Props) {
-  const [name, setName] = useState(restaurant?.name ?? '')
-  const [outletId, setOutletId] = useState(restaurant?.zomato_outlet_id ?? '')
-  const [city, setCity] = useState(restaurant?.city ?? '')
+  const [name, setName] = useState(restaurant?.name ?? 'My Restaurant')
+  const [outletId, setOutletId] = useState(restaurant?.zomato_outlet_id ?? '10000001')
+  const [city, setCity] = useState(restaurant?.city ?? 'Bengaluru')
   const [commission, setCommission] = useState(String(restaurant?.commission_pct ?? 20))
   const [gst, setGst] = useState(String(restaurant?.gst_on_commission_pct ?? 18))
   const [discountSharing, setDiscountSharing] = useState(String(restaurant?.discount_sharing_pct ?? 50))
-  const [adBudget, setAdBudget] = useState(String(restaurant?.monthly_ad_budget ?? 0))
+  const [adBudget, setAdBudget] = useState(String(restaurant?.monthly_ad_budget ?? 5000))
   const [adBudgetGst, setAdBudgetGst] = useState(restaurant?.ad_budget_includes_gst ?? false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
